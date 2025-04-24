@@ -47,9 +47,6 @@ class ProductModel extends Model
     public function ordercarts(){
         return $this->hasMany(ProductModel::class);
     }
-    public function orderItems()
-{
-    return $this->hasMany(OrderItemModel::class);
-}
+
 
 }

@@ -21,7 +21,9 @@ class CustomerMiddleware
             if (Auth::check() && Auth::user()->role === 'customer') {
                 return $next($request);
             }
-            return redirect('/');
+            return response()->json([
+                'message' => 'Access denied. Customer role required.',
+            ], 403);
         }
     }
 }

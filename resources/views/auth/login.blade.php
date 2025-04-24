@@ -74,8 +74,12 @@
                                         </a>
                                     @endif
                                 </div>
+
                             </div>
                         </form>
+                        <a href="{{route('auth.google')}}" class="btn btn-danger " >
+                            Login with Google
+                        </a>
                     </div>
                 </div>
             </div>

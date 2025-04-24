@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\OrderCart;
 use Illuminate\Database\Eloquent\Model;
 
 class OrderModel extends Model
@@ -20,10 +21,10 @@ class OrderModel extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    public function items()
+    public function carts()
     {
-        return $this->hasMany(OrderItemModel::class,'id');
+        return $this->hasMany(OrderCart::class, 'order_id', 'id');
     }
 }

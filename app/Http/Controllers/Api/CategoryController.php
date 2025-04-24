@@ -67,7 +67,7 @@ class CategoryController extends ApiController
             $res = ProductResources::collection($category->products);
             return $this->sendSuccess($res, 'Category retrieved successfully');
         }else{
-            return $this->sendError('Category not found',201,[]);
+            return $this->sendError('Category not found',201, []);
         }
         // foreach ($category->products as $product) {
         //     if ($product->product_image) {

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboarddd</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="{{url('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -67,6 +67,14 @@
             </li>
 
             <hr class="sidebar-divider my-0">
+              <!-- Nav Item - Dashboard -->
+              <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.label')}}">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Sub Category</span></a>
+            </li>
+
+            <hr class="sidebar-divider my-0">
             <li class="nav-item active">
                 <a class="nav-link" href="{{route('admin.product')}}">
                     <i class="fas fa-tags fa-light text-light"></i>
@@ -112,6 +120,14 @@
                 <a class="nav-link" href="{{route('admin.wishlist')}}">
                     <i class="fas fa-solid fa-heart"></i>
                     <span>Favourite Carts</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.banner')}}">
+                    <i class="fas fa-bullhorn text-yellow-600"></i>
+                    <span>Banner Images</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">

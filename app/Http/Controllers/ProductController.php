@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
    public function index()
    {
-        $products = ProductModel::inRandomOrder()->get();
+        $products = ProductModel::get();
         $categories = CategoryModel::all();
         return view('admin.product.index', compact('products','categories'));
    }

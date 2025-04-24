@@ -13,13 +13,13 @@
         </script>
     @endif
      <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-1">
-                        <a href="{{route('admin.category.create')}}" class="btn btn-success">Add New Categroy</a>
+                    <div class="d-sm-flex align-items-center justify-content-end mb-1">
+                        <a href="{{route('admin.banner.create')}}" class="btn btn-success">Add New Banner</a>
 
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Category Table</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Banner Table</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,7 +27,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 30px">#</th>
-                                            <th>Name</th>
+                                            <th>Title</th>
                                             <th>Description</th>
                                             <th>Image</th>
                                             <th>Action</th>
@@ -36,40 +36,37 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->description }}</td>
-                        <td style="width: 150px">
-                            @if($category->image)
-                            <img src="{{ asset('storage/'.$category->image) }}" width="150" height="100">
-                            @else
-                                No Image
-                            @endif
-                        </td>
-                        <td>
-                            <div class="d-flex justify-content-space-between">
-                                <a href="{{route('admin.category.show',$category->id)}}" class="btn btn-primary mr-2 d-flex justify-content-center col">
-                                    <i class="fas fa-solid fa-eye mr-2 mt-1 " style="font-size: 15px"></i>
-                                    Show
-                                </a>
-                                <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-primary mr-2 d-flex justify-content-center col">
-                                    <i class="fas fa-solid fa-pen mr-2 mt-1 " style="font-size: 15px"></i>
-                                    Edit</a>
-                                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger d-flex">
-                                        <i class="fas fa-solid fa-trash mr-2 mt-1 " style="font-size: 15px"></i>
-                                        Delete
-                                    </button>
-                                </form>
+                                    @foreach($banners as $banner)
+                                    <tr>
+                                        <td>{{ $banner->id }}</td>
+                                        <td>{{ $banner->title }}</td>
+                                        <td>{{ $banner->description }}</td>
+                                        <td style="width: 150px">
+                                            @if($banner->image)
+                                            <img src="{{ asset('storage/'.$banner->image) }}" width="150" height="100">
+                                            @else
+                                                No Image
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="d-flex justify-content-space-between">
 
-                            </div>
-                         </td>
-                    </tr>
-                @endforeach
+                                                <a href="{{ route('admin.banner.edit', $banner->id) }}" class="btn btn-primary mr-2 d-flex">
+                                                    <i class="fas fa-solid fa-pen mr-2 mt-1 " style="font-size: 15px"></i>
+                                                    Edit</a>
+                                                <form action="{{ route('admin.banner.delete', $banner->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger d-flex">
+                                                        <i class="fas fa-solid fa-trash mr-2 mt-1 " style="font-size: 15px"></i>
+                                                        Delete
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
 
 

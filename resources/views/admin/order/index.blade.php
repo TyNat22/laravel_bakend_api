@@ -24,12 +24,12 @@
     @endif
      <!-- Page Heading -->
      <div class="d-sm-flex align-items-center justify-content-between mb-1">
-        <a href="{{route('admin.order.create')}}" class="btn btn-success">Add New Product</a>
+        {{-- <a href="" class="btn btn-success">Add New Product</a> --}}
     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div style="width: 150px;height:40px;border-radius:0px 15px;" class="bg-success align-item-center row justify-content-center">
-                                <h6 class="mt-2 row font-weight-bold text-light text-center align-item-center">Wishlist Table</h6>
+                                <h6 class="mt-2 row font-weight-bold text-light text-center align-item-center">Order Table</h6>
                             </div>
                         </div>
                         <div class="card-body">
@@ -38,11 +38,11 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 30px">#</th>
-                                            <th>user_name</th>
-                                            <th>product_name</th>
-                                            <th>Quantity</th>
+                                            <th>customer_name</th>
+                                            <th>customer_email</th>
+                                            <th>qty</th>
                                             <th>Price</th>
-                                            <th>Total</th>
+                                            <th>payment_status</th>
                                             <th>Status</th>
                                             <th>Action</th>
 
@@ -50,39 +50,32 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach($ordercarts as $ordercart)
+                                        @foreach ($orders as $order)
                                             <tr>
-                                                <td>{{ $ordercart->id }}</td>
-                                                <td>{{ $ordercart->user->name }}</td>
-                                                <td>{{ $ordercart->product->product_name }}</td>
-                                                <td>{{ $ordercart->quantity }}</td>
-                                                <td>{{ $ordercart->product->product_price }} $</td>
-                                                <td>{{ $ordercart->total_price }} $</td>
-                                                <td>{{ $ordercart->status}}</td>
+                                                <td>{{ $order->id }}</td> <!-- Accessing Eloquent object property -->
+                                                <td>{{ $order->user->name }}</td>
+                                                <td>{{ $order->user->email }}</td>
+                                                <td>
+                                                    @foreach ($order->carts as $cart)
+                                                    <!-- Display product name and quantity -->
 
+                                                        {{ $cart->quantity }}
 
-
-
-
-                                            <td>
-                                                <a href="" class="btn btn-info">show User</a>
-                                                <a href="" class="btn btn-primary">show Product</a>
-                                                <a href="" class="btn btn-success">checkOut</a>
-                                                <form action="{{route('admin.order.delete',$ordercart->id)}}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this favourite product?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
+                                                @endforeach
+                                                </td>
+                                                <td>${{ $order->total_price }}</td>
+                                                <td>{{ $order->payment_status }}</td>
+                                                <td>{{ $order->status }}</td>
+                                                <td class="d-flex">
+                                                    <button class="btn btn-success">show</button>
+                                                    <form action="" method="POST" onsubmit="return confirm('Are you sure you want to delete this order?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
-
-
-
-
-
-
-
                                     </tbody>
                                 </table>
                             </div>

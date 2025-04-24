@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key to users table
-            // $table->string('order_number')->unique(); // Unique order number
             $table->double('total_price', 10, 2); // Total price of order
             $table->enum('payment_status',['not paid','paid'])->default('not paid');
             $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled'])->default('pending'); // Order status

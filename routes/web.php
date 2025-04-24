@@ -3,17 +3,19 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Middleware\AdminMiddleware;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\LabelController;
-use App\Http\Controllers\OrderCartController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\LabelController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\OrderCartController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\API\Auth\GoogleAuthController;
+use App\Http\Controllers\BannerController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -27,7 +29,8 @@ Route::post('/register',[RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-
+Route::get('auth/google', [GoogleAuthController::class, 'redirectGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [GoogleAuthController::class, 'googleCallback'])->name('auth.google.callback');
 // Route::group([
 //     'middleware' => 'auth:sanctum'
 // ], function() {
@@ -79,10 +82,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
          Route::get('/admin/rate/product/{productId}', [RateController::class, 'showProduct'])->name('admin.rate.showProduct');
 
          //order_cart
-         Route::get('admin/order',[OrderCartController::class,'index'])->name('admin.order');
-         Route::get('admin/order/create',[OrderCartController::class,'create'])->name('admin.order.create');
-         Route::post('admin/order/store',[OrderCartController::class,'store'])->name('admin.order.store');
-         Route::delete('admin/order/{id}/delete',[OrderCartController::class,'destroy'])->name('admin.order.delete');
+        //  Route::get('admin/order',[OrderCartController::class,'index'])->name('admin.order');
+        //  Route::get('admin/order/create',[OrderCartController::class,'create'])->name('admin.order.create');
+        //  Route::post('admin/order/store',[OrderCartController::class,'store'])->name('admin.order.store');
+        //  Route::delete('admin/order/{id}/delete',[OrderCartController::class,'destroy'])->name('admin.order.delete');
 
          //user
          Route::get('/admin/user',[UserController::class,'index'])->name('admin.user');
@@ -91,8 +94,16 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
          Route::delete('/admin/user/{id}/delete',[UserController::class,'destroy'])->name('admin.user.delete');
 
          //order
-         Route::get('/orders',[OrderController::class,'index']);
-         Route::get('/orders/{id}',[OrderController::class,'show']);
+         Route::get('admin/orders',[OrderController::class,'index'])->name('admin.order');
+        //  Route::get('admin/orders/{id}',[OrderController::class,'show']);
+
+        //
+        Route::get('/admin/banner',[BannerController::class,'index'])->name('admin.banner');
+        Route::get('/admin/banner/create',[BannerController::class,'create'])->name('admin.banner.create');
+        Route::post('/admin/banner/store',[BannerController::class,'store'])->name('admin.banner.store');
+        Route::get('/admin/banner/{id}/edit',[BannerController::class,'edit'])->name('admin.banner.edit');
+        Route::put('/admin/banner/{id}/update',[BannerController::class,'update'])->name('admin.banner.update');
+        Route::delete('/admin/banner/{id}/delete',[BannerController::class,'destroy'])->name('admin.banner.delete');
 
 
     });

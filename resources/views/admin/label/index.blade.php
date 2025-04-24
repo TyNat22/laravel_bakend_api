@@ -14,7 +14,10 @@
     @endif
      <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-1">
-                        <a href="{{route('admin.label.create')}}" class="btn btn-success">Add New Label</a>
+                        <a href="{{route('admin.label.create')}}" class="btn btn-success">
+                            <i class="fas fa-solid fa-plus mr-2 mt-1 " style="font-size: 15px"></i>
+                            Add New Label
+                        </a>
 
                     </div>
                     <div class="card shadow mb-4">
@@ -43,12 +46,21 @@
                                                 <td>
 
                                                     <div class="d-flex justify-content-space-between">
-                                                        <a href="{{ route('admin.label.show', $label->id) }}" class="btn btn-info mr-2">Show</a>
-                                                        <a href="{{ route('admin.label.edit', $label->id) }}" class="btn btn-primary mr-2">Edit</a>
+                                                        <a href="{{ route('admin.label.show', $label->id) }}" class="btn btn-info mr-2 d-flex justify-content-center">
+                                                            <i class="fas fa-solid fa-eye mr-2 mt-1 " style="font-size: 15px"></i>
+                                                            Show
+                                                        </a>
+                                                        <a href="{{ route('admin.label.edit', $label->id) }}" class="btn btn-primary mr-2 d-flex justify-content-center">
+                                                            <i class="fas fa-solid fa-pen mr-2 mt-1 " style="font-size: 15px"></i>
+                                                            Edit
+                                                        </a>
                                                         <form action="{{route('admin.label.delete',$label->id)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit" class="btn btn-danger d-flex justify-content-center">
+                                                                <i class="fas fa-solid fa-trash mr-2 mt-1 " style="font-size: 15px"></i>
+                                                                Delete
+                                                            </button>
                                                         </form>
 
                                                     </div>

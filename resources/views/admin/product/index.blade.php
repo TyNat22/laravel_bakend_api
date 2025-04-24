@@ -108,11 +108,17 @@
                                 <td>{{ $product->product_price }}$</td>
                                 <td>
                                     <div class="d-flex justify-content-between">
-                                        <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary mr-2">Edit</a>
+                                        <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary mr-2 d-flex justify-content-center">
+                                            <i class="fas fa-solid fa-pen mr-2 mt-1 " style="font-size: 15px"></i>
+                                            Edit
+                                        </a>
                                         <form action="{{ route('admin.product.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger d-flex justify-content-center">
+                                                <i class="fas fa-solid fa-trash mr-2 mt-1 " style="font-size: 15px"></i>
+                                                Delete
+                                            </button>
                                         </form>
                                     </div>
                                 </td>
