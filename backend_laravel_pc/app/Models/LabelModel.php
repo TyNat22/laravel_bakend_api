@@ -15,4 +15,5 @@ class LabelModel extends Model
        return $this->hasMany(ProductModel::class,'label_id');
    }
 
+
 }

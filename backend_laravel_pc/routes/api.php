@@ -13,6 +13,8 @@ Route::get('/user', function (Request $request) {
 
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\WishlistController;
+use App\Http\Controllers\Api\BannerApiController;
+use App\Http\Controllers\Api\LabelApiApiController;
 use App\Http\Controllers\Api\Auth\LoginApiController;
 use App\Http\Controllers\API\Auth\GoogleAuthController;
 use App\Http\Controllers\Api\Auth\RegisterApiController;
@@ -52,4 +54,17 @@ Route::group([
 //Category
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('products', ProductController::class);
+
+//banner
+Route::get('/banners', [BannerApiController::class, 'index']);
+Route::post('/banners', [BannerApiController::class, 'store']);
+Route::put('/banners/{id}/update', [BannerApiController::class, 'update']);
+Route::delete('/banners/{id}/delete', [BannerApiController::class, 'destroy']);
+
+//label--subcategory
+Route::get('/labels', [LabelApiApiController::class, 'index']);
+Route::get('/labels/{id}', [LabelApiApiController::class, 'show']);
+Route::post('/labels', [LabelApiApiController::class, 'store']);
+Route::put('/labels/{id}', [LabelApiApiController::class, 'update']);
+Route::delete('/labels/{id}', [LabelApiApiController::class, 'destroy']);
 

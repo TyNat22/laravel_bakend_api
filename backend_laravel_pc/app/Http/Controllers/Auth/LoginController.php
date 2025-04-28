@@ -46,7 +46,7 @@ class LoginController extends Controller
         }else{
 
             Auth::login($queryUser);
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard')->with('login_success', 'Login successful!');;
         }
 
 

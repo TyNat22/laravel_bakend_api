@@ -14,7 +14,11 @@
     @endif
     <!-- Page Heading -->
     <div class="d-sm-flex row align-items-right justify-content-end mb-1 mr-2">
-        <a href="{{route('admin.product.create')}}" class="btn btn-success">Add New Product</a>
+
+        <a href="{{route('admin.product.create')}}" class="btn btn-success">
+            <i class="fas fa-solid fa-plus mr-2 mt-1 " style="font-size: 15px"></i>
+            Add New Product
+        </a>
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -84,7 +88,10 @@
                             <th>Storage</th>
                             <th>VGA</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            <th>
+                                <i class="fas fa-bolt"></i>
+                                Action
+                            </th>
 
                         </tr>
                     </thead>
@@ -135,20 +142,20 @@
         </div>
     </div>
     <script>
-        toastr.options = {
-            "positionClass": "toast-center",  // Custom position
-            "timeOut": "3000",                 // Auto close after 3 seconds
-            "closeButton": true,               // Show close button
-            "progressBar": true                // Show progress bar
-        };
+        // toastr.options = {
+        //     "positionClass": "toast-center",  // Custom position
+        //     "timeOut": "3000",                 // Auto close after 3 seconds
+        //     "closeButton": true,               // Show close button
+        //     "progressBar": true                // Show progress bar
+        // };
 
-        @if(session('success'))
-            toastr.success("{{ session('success') }}");
-        @endif
+        // @if(session('success'))
+        //     toastr.success("{{ session('success') }}");
+        // @endif
 
-        @if(session('error'))
-            toastr.error("{{ session('error') }}");
-        @endif
+        // @if(session('error'))
+        //     toastr.error("{{ session('error') }}");
+        // @endif
     </script>
     <style>
         /* Custom center position */

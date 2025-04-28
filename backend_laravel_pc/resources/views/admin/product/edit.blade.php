@@ -79,7 +79,7 @@
                 <div class="mb-3">
                     <label for="" class="form-label">Currently Image</label><br>
                     @if($product->product_image)
-                        <img src="{{ asset('storage/images/product/'.$product->product_image) }}" height="100" width="150"><br><br>
+                        <img src="{{ asset('storage/'.$product->product_image) }}" height="100" width="150"><br><br>
                     @endif
                     <input type="file" name="product_image" class="form-control" accept="image/*" >
                 </div>
